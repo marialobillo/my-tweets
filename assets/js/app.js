@@ -93,9 +93,17 @@ function obtenerTweetsLocalStorage(){
 // delete tweet from local storage
 function borrarTwerrtLocalStorage(tweet){
   let stweets, tweetBorrar;
+  // delete X form tweet
   tweetBorrar = tweet.substring(0, tweet.length - 1);
 
-  console.log(tweetBorrar)
+  tweets = obtenerTweetsLocalStorage();
+
+  tweets.forEach(function(tweet, index){
+    if(tweetBorrar === tweet){
+      tweets.splice(index, 1);
+    }
+  });
+  localStorage.setItem('tweets', JSON.stringify(tweets));
 
 
 }
